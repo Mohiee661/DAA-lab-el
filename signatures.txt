@@ -1,0 +1,4 @@
+SELECT * FROM users
+DROP TABLE
+<script>alert('xss')</script>
+rm -rf / 
