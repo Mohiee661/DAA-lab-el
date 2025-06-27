@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intrusion Detection System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-shield-alt"></i> Intrusion Detection System</h1>
+            <p>Using KMP & Naive String Matching Algorithms</p>
+        </header>
+
+        <main>
+            <div class="panels-container">
+                <!-- Left panel: Input -->
+                <div class="panel input-panel">
+                    <h2>Input</h2>
+                    
+                    <div class="input-group">
+                        <label for="signatures">Signatures (one per line):</label>
+                        <textarea id="signatures" rows="6" placeholder="Enter signatures to detect..."></textarea>
+                        <div class="file-controls">
+                            <button id="load-default-signatures" class="btn-secondary">
+                                <i class="fas fa-file-import"></i> Load Default
+                            </button>
+                            <input type="file" id="signatures-file" class="hidden">
+                            <label for="signatures-file" class="file-label">
+                                <i class="fas fa-upload"></i> Upload
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="log-content">Log Content:</label>
+                        <textarea id="log-content" rows="12" placeholder="Enter log content to analyze..."></textarea>
+                        <div class="file-controls">
+                            <button id="load-default-log" class="btn-secondary">
+                                <i class="fas fa-file-import"></i> Load Default
+                            </button>
+                            <input type="file" id="log-file" class="hidden">
+                            <label for="log-file" class="file-label">
+                                <i class="fas fa-upload"></i> Upload
+                            </label>
+                        </div>
+                    </div>
+
+                    <button id="detect-btn" class="btn-primary">
+                        <i class="fas fa-search"></i> Detect Intrusions
+                    </button>
+                </div>
+                
+                <!-- Right panel: Results -->
+                <div class="panel results-panel">
+                    <h2>Results</h2>
+                    
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="kmp">KMP Algorithm</button>
+                        <button class="tab-btn" data-tab="naive">Naive Algorithm</button>
+                        <button class="tab-btn" data-tab="comparison">Performance Comparison</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div id="kmp-tab" class="tab-pane active">
+                            <div class="result-summary">
+                                <span id="kmp-count" class="result-count">0</span> matches found
+                                <span id="kmp-time" class="result-time">0.000 sec</span>
+                            </div>
+                            <div id="kmp-results" class="results-container">
+                                <p class="no-results">No results yet. Run detection first.</p>
+                            </div>
+                        </div>
+                        
+                        <div id="naive-tab" class="tab-pane">
+                            <div class="result-summary">
+                                <span id="naive-count" class="result-count">0</span> matches found
+                                <span id="naive-time" class="result-time">0.000 sec</span>
+                            </div>
+                            <div id="naive-results" class="results-container">
+                                <p class="no-results">No results yet. Run detection first.</p>
+                            </div>
+                        </div>
+                        
+                        <div id="comparison-tab" class="tab-pane">
+                            <div class="comparison-chart">
+                                <canvas id="performance-chart"></canvas>
+                            </div>
+                            <div class="comparison-stats">
+                                <div class="stat-box">
+                                    <h3>KMP Algorithm</h3>
+                                    <p><strong>Time:</strong> <span id="kmp-time-comp">0.000</span> seconds</p>
+                                    <p><strong>Matches:</strong> <span id="kmp-matches-comp">0</span></p>
+                                </div>
+                                <div class="stat-box">
+                                    <h3>Naive Algorithm</h3>
+                                    <p><strong>Time:</strong> <span id="naive-time-comp">0.000</span> seconds</p>
+                                    <p><strong>Matches:</strong> <span id="naive-matches-comp">0</span></p>
+                                </div>
+                                <div class="stat-box">
+                                    <h3>Speed Comparison</h3>
+                                    <p id="speed-comparison">No data yet</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="status-bar">
+                <span id="status-message">Ready</span>
+            </div>
+            <p>&copy; 2023 Intrusion Detection System</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
