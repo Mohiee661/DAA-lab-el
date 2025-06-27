@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Intrusion Detection System using KMP String Matching Algorithm
 
 This project demonstrates an Intrusion Detection System (IDS) that scans log files for known malicious patterns using the Knuth-Morris-Pratt (KMP) string matching algorithm. It also includes a naive string matching implementation for comparison.
@@ -112,3 +113,7 @@ The system will scan log files for malicious patterns listed in signatures files
 ## License
 
 This project is open-source and available under the MIT License. 
+=======
+# DAA-lab-el
+dijkstras shortest path
+>>>>>>> ced6b04eaa15e4df779d200fed98dcd7a51b6ad4
